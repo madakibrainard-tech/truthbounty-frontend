@@ -11,7 +11,7 @@ export const TransactionErrorModal: React.FC<Props> = ({ error, onClose, onRetry
     if (!error) return null;
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm safe-area-top safe-area-bottom safe-area-left safe-area-right">
             <div className="w-full max-w-md rounded-xl bg-slate-900 border border-slate-800 p-6 shadow-2xl text-slate-100">
                 <div className="flex items-center space-x-3 mb-4">
                     <div className={`flex h-10 w-10 items-center justify-center rounded-full ${error.isUserRejection ? 'bg-amber-500/10 text-amber-400' : 'bg-red-500/10 text-red-400'}`}>
@@ -31,14 +31,14 @@ export const TransactionErrorModal: React.FC<Props> = ({ error, onClose, onRetry
                     {error.retryable && onRetry && (
                         <button
                             onClick={() => { onClose(); onRetry(); }}
-                            className="flex-1 rounded-lg bg-indigo-600 hover:bg-indigo-500 py-2.5 text-sm font-medium transition-colors"
+                            className="flex-1 rounded-lg bg-indigo-600 hover:bg-indigo-500 py-2.5 text-sm font-medium transition-colors min-h-[44px] touch-manipulation"
                         >
                             Try Again
                         </button>
                     )}
                     <button
                         onClick={onClose}
-                        className="flex-1 rounded-lg bg-slate-800 hover:bg-slate-700 py-2.5 text-sm font-medium transition-colors text-slate-300"
+                        className="flex-1 rounded-lg bg-slate-800 hover:bg-slate-700 py-2.5 text-sm font-medium transition-colors text-slate-300 min-h-[44px] touch-manipulation"
                     >
                         Dismiss
                     </button>

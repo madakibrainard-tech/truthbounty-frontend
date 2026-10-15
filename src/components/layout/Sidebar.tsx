@@ -181,7 +181,7 @@ const Sidebar = () => {
       {/* Mobile Drawer Hamburger Trigger */}
       <button
         ref={hamburgerRef}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-card rounded-lg border border-border text-foreground shadow-md hover:bg-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-card rounded-lg border border-border text-foreground shadow-md hover:bg-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring safe-area-left"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         aria-label="Toggle navigation menu"
         aria-expanded={isMobileMenuOpen}
@@ -232,6 +232,7 @@ const Sidebar = () => {
           fixed lg:static inset-y-0 left-0 z-40
           flex flex-col w-64 h-full bg-card border-r border-border text-foreground
           transform transition-transform duration-300 ease-in-out motion-reduce:transition-none
+          safe-area-bottom
           ${
             isMobileMenuOpen
               ? 'visible translate-x-0'
@@ -268,7 +269,7 @@ const Sidebar = () => {
             <button
               type="button"
               onClick={() => handleNavClick(PRIMARY_ACTION_ITEM.href)}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-ring min-h-[44px] touch-manipulation"
               aria-label="Submit Claim"
             >
               <PRIMARY_ACTION_ITEM.icon className="w-4 h-4" aria-hidden="true" />
@@ -298,7 +299,7 @@ const Sidebar = () => {
                         href={item.href}
                         onClick={() => setIsMobileMenuOpen(false)}
                         aria-current={active ? 'page' : undefined}
-                        className={`w-full flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                        className={`w-full flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring min-h-[44px] touch-manipulation ${
                           active
                             ? 'bg-accent text-accent-foreground font-semibold shadow-xs'
                             : 'text-muted-foreground hover:bg-accent/60 hover:text-foreground'
@@ -436,7 +437,7 @@ const Sidebar = () => {
           <Link
             href={APP_ROUTES.IDENTITY}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="flex items-center gap-3 p-2 rounded-lg hover:bg-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring text-left"
+            className="flex items-center gap-3 p-2 rounded-lg hover:bg-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring text-left min-h-[44px] touch-manipulation"
             aria-label={isConnected ? `User profile for ${account}` : 'User profile and identity'}
           >
             <div className="w-9 h-9 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-bold text-sm shrink-0 shadow-xs">
