@@ -68,14 +68,17 @@ describe('useKeyboardAwareScroll', () => {
     jest.clearAllMocks();
     (window as any).visualViewport = createMockVisualViewport({ height: 600 });
     jest.spyOn(window, 'scrollBy').mockImplementation(() => {});
+    // Advance timers for debounce
+    jest.useFakeTimers();
   });
 
   afterEach(() => {
     delete (window as any).visualViewport;
     (window.scrollBy as jest.Mock).mockRestore();
+    jest.useRealTimers();
   });
 
-  it('calls scrollBy when input is below viewport', () => {
+  it('calls scrollBy when input is below viewport after debounce', () => {
     const inputRef = { current: document.createElement('input') };
     const mockRect = { bottom: 700, top: 600, left: 0, right: 100, width: 100, height: 100 };
     jest.spyOn(inputRef.current!, 'getBoundingClientRect').mockReturnValue(mockRect as DOMRect);
@@ -91,6 +94,11 @@ describe('useKeyboardAwareScroll', () => {
       mockViewport.addEventListener.mock.calls.forEach((call) => {
         if (call[0] === 'resize') call[1]();
       });
+    });
+    
+    // Advance timers past debounce and cooldown
+    act(() => {
+      jest.advanceTimersByTime(500);
     });
     
     // Should scroll to bring input into view
