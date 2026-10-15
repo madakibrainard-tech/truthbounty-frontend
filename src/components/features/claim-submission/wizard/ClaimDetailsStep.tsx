@@ -83,6 +83,7 @@ export default function ClaimDetailsStep({
             w-full px-4 py-2 bg-[#232329] border rounded-lg
             text-white placeholder-slate-500
             focus:outline-none focus:ring-2
+            min-h-[44px] touch-manipulation
             ${touched.has('title') && errors.title
               ? 'border-red-500 focus:ring-red-500/50'
               : 'border-[#2a2a32] focus:ring-orange-500/50'}
@@ -123,6 +124,7 @@ export default function ClaimDetailsStep({
             w-full px-4 py-2 bg-[#232329] border rounded-lg
             text-white
             focus:outline-none focus:ring-2
+            min-h-[44px] touch-manipulation
             ${touched.has('category') && errors.category
               ? 'border-red-500 focus:ring-red-500/50'
               : 'border-[#2a2a32] focus:ring-orange-500/50'}
@@ -160,6 +162,7 @@ export default function ClaimDetailsStep({
             w-full px-4 py-2 bg-[#232329] border rounded-lg
             text-white
             focus:outline-none focus:ring-2
+            min-h-[44px] touch-manipulation
             ${touched.has('impact') && errors.impact
               ? 'border-red-500 focus:ring-red-500/50'
               : 'border-[#2a2a32] focus:ring-orange-500/50'}
@@ -202,6 +205,7 @@ export default function ClaimDetailsStep({
             w-full px-4 py-2 bg-[#232329] border rounded-lg
             text-white placeholder-slate-500
             focus:outline-none focus:ring-2
+            min-h-[44px] touch-manipulation
             ${touched.has('source') && errors.source
               ? 'border-red-500 focus:ring-red-500/50'
               : 'border-[#2a2a32] focus:ring-orange-500/50'}
@@ -239,6 +243,7 @@ export default function ClaimDetailsStep({
             w-full px-4 py-2 bg-[#232329] border rounded-lg
             text-white placeholder-slate-500
             focus:outline-none focus:ring-2 resize-none
+            min-h-[44px] touch-manipulation
             ${touched.has('description') && errors.description
               ? 'border-red-500 focus:ring-red-500/50'
               : 'border-[#2a2a32] focus:ring-orange-500/50'}
@@ -269,7 +274,7 @@ export default function ClaimDetailsStep({
       <div className="flex items-center justify-between pt-4 border-t border-[#232329]">
         <button
           onClick={onCancel}
-          className="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white transition-colors"
+          className="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white transition-colors min-h-[44px] touch-manipulation"
         >
           Cancel
         </button>
@@ -277,7 +282,7 @@ export default function ClaimDetailsStep({
           onClick={onNext}
           disabled={!canProceed}
           className={`
-            px-6 py-2 text-sm font-medium rounded-lg transition-colors
+            px-6 py-2 text-sm font-medium rounded-lg transition-colors min-h-[44px] touch-manipulation
             ${canProceed
               ? 'bg-orange-500 hover:bg-orange-600 text-white'
               : 'bg-[#232329] text-slate-500 cursor-not-allowed'}

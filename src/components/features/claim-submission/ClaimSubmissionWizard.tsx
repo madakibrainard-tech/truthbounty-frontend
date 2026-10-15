@@ -28,6 +28,7 @@ import EvidenceUploadStep from './wizard/EvidenceUploadStep';
 import ReviewStep from './wizard/ReviewStep';
 import TransactionStep from './wizard/TransactionStep';
 import ConfirmationStep from './wizard/ConfirmationStep';
+import { useVisualViewport } from '@/hooks/useVisualViewport';
 
 export interface ClaimSubmissionWizardProps {
   onClose: () => void;
@@ -60,6 +61,10 @@ export default function ClaimSubmissionWizard({
   
   // Dialog focus management
   useDialogFocus(true, modalRef, closeButtonRef, onClose);
+
+  // Visual viewport for keyboard awareness
+  const { height: visualViewportHeight } = useVisualViewport();
+  const modalMaxHeight = visualViewportHeight > 0 ? visualViewportHeight - 32 : '90vh';
 
   // Announce step changes to screen readers
   const previousStepRef = useRef<WizardStep>(state.currentStep);
@@ -108,7 +113,7 @@ export default function ClaimSubmissionWizard({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 safe-area-top safe-area-bottom safe-area-left safe-area-right"
       role="presentation"
       onClick={(e) => {
         if (e.target === e.currentTarget) {
@@ -118,7 +123,8 @@ export default function ClaimSubmissionWizard({
     >
       <div
         ref={modalRef}
-        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-[#18181b] border border-[#232329] rounded-lg shadow-xl"
+        className="relative w-full max-w-3xl overflow-y-auto bg-[#18181b] border border-[#232329] rounded-lg shadow-xl"
+        style={{ maxHeight: modalMaxHeight }}
         role="dialog"
         aria-modal="true"
         aria-labelledby="wizard-title"
@@ -133,7 +139,7 @@ export default function ClaimSubmissionWizard({
             <button
               ref={closeButtonRef}
               onClick={handleClose}
-              className="p-2 rounded-lg hover:bg-[#232329] transition-colors text-slate-400 hover:text-white"
+              className="p-2 rounded-lg hover:bg-[#232329] transition-colors text-slate-400 hover:text-white min-h-[44px] min-w-[44px] touch-manipulation flex items-center justify-center"
               aria-label="Close wizard"
             >
               <X className="w-5 h-5" />
@@ -158,7 +164,7 @@ export default function ClaimSubmissionWizard({
                       onClick={() => isAccessible && actions.goToStep(step)}
                       disabled={!isAccessible}
                       className={`
-                        w-full text-xs sm:text-sm font-medium py-2 px-1 sm:px-3 rounded-lg transition-colors
+                        w-full text-xs sm:text-sm font-medium py-2 px-1 sm:px-3 rounded-lg transition-colors min-h-[44px] touch-manipulation
                         ${isCurrent 
                           ? 'bg-orange-500/20 text-orange-400 border border-orange-500/50' 
                           : isCompleted

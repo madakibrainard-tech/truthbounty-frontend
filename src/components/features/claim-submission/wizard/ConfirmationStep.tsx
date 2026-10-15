@@ -90,13 +90,13 @@ export default function ConfirmationStep({
             <button
               onClick={onViewClaim}
               disabled={!claimId}
-              className="px-6 py-2 text-sm font-medium bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-6 py-2 text-sm font-medium bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px] touch-manipulation"
             >
               View Claim
             </button>
             <button
               onClick={onCreateAnother}
-              className="px-6 py-2 text-sm font-medium bg-[#232329] hover:bg-[#2a2a32] text-white rounded-lg transition-colors"
+              className="px-6 py-2 text-sm font-medium bg-[#232329] hover:bg-[#2a2a32] text-white rounded-lg transition-colors min-h-[44px] touch-manipulation"
             >
               Create Another
             </button>
@@ -105,13 +105,13 @@ export default function ConfirmationStep({
           <>
             <button
               onClick={onCreateAnother}
-              className="px-6 py-2 text-sm font-medium bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors"
+              className="px-6 py-2 text-sm font-medium bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors min-h-[44px] touch-manipulation"
             >
               Try Again
             </button>
             <button
               onClick={onClose}
-              className="px-6 py-2 text-sm font-medium bg-[#232329] hover:bg-[#2a2a32] text-white rounded-lg transition-colors"
+              className="px-6 py-2 text-sm font-medium bg-[#232329] hover:bg-[#2a2a32] text-white rounded-lg transition-colors min-h-[44px] touch-manipulation"
             >
               Close
             </button>
