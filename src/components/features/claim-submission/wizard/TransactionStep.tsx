@@ -57,7 +57,7 @@ export default function TransactionStep({
       <div className="flex items-center justify-end pt-4 border-t border-[#232329]">
         <button
           onClick={onCancel}
-          className="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white transition-colors min-h-[44px] touch-manipulation"
+          className="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white transition-colors"
         >
           Cancel
         </button>

@@ -46,7 +46,7 @@ export function ConnectButton({
               <button
                 type="button"
                 className={styles.button}
-                style={{ height: isHigher ? 50 : 44 }}
+                style={{ height: isHigher ? 50 : 38 }}
                 onClick={onClick ?? openConnectModal}
                 aria-label={label}
               >

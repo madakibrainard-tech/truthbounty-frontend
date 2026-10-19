@@ -1,9 +1,8 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { getTokenBalance } from '@/app/lib/wallet';
 import { useAccount } from '@/hooks/useAccount';
-import { useKeyboardAwareScroll } from '@/hooks/useVisualViewport';
 
 import { FormattedToken } from '@/components/ui/formatting';
 
@@ -18,9 +17,6 @@ export function StakeForm({
   const [stake, setStake] = useState('');
   const [balance, setBalance] = useState<number | null>(null);
   const account = useAccount();
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  useKeyboardAwareScroll(inputRef, { offset: 80 });
 
   useEffect(() => {
     if (!account?.address) {
@@ -51,7 +47,6 @@ export function StakeForm({
 
       <label htmlFor="stake-amount" className="sr-only">Stake amount</label>
       <input
-        ref={inputRef}
         id="stake-amount"
         type="number"
         value={stake}

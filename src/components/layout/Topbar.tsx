@@ -16,7 +16,7 @@ const Topbar = () => {
 
   return (
     <header
-      className="flex items-center justify-between h-16 pl-16 pr-4 sm:pr-6 lg:pl-8 lg:pr-8 border-b border-border bg-card text-foreground safe-area-top"
+      className="flex items-center justify-between h-16 pl-16 pr-4 sm:pr-6 lg:pl-8 lg:pr-8 border-b border-border bg-card text-foreground"
       role="banner"
     >
       <div className="flex min-w-0 items-center space-x-2 sm:space-x-4">
@@ -76,7 +76,7 @@ const Topbar = () => {
         <FeatureFlagGate flag="CLAIM_SUBMISSION">
           <button
             type="button"
-            className="inline-flex items-center justify-center bg-primary text-primary-foreground px-3 sm:px-4 py-2 rounded-md font-medium text-sm hover:bg-primary/90 transition-colors shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-ring min-h-[44px] touch-manipulation"
+            className="inline-flex items-center justify-center bg-primary text-primary-foreground px-3 sm:px-4 py-2 rounded-md font-medium text-sm hover:bg-primary/90 transition-colors shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             onClick={() => router.push(APP_ROUTES.CLAIM_NEW)}
             aria-label="Submit a new claim"
           >

@@ -8,12 +8,10 @@
   background: #1a1523;
   border-radius: 8px;
   border: 0;
-  height: 44px;
-  min-height: 44px;
+  height: 38px;
   font-weight: 600;
   font-size: 14px;
   line-height: 22px;
   color: #ffffff;
   cursor: pointer;
-  touch-manipulation: manipulation;
 }
