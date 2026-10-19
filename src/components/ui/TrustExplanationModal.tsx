@@ -12,7 +12,7 @@ export default function TrustExplanationModal({ onClose }: Props) {
 
   return (
     <div
-      className="fixed inset-0 z-50 modal-shell bg-black/60 safe-area-top safe-area-bottom safe-area-left safe-area-right"
+      className="fixed inset-0 z-50 modal-shell bg-black/60"
       role="presentation"
     >
       {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions -- Escape/focus-trap keydown handling on the dialog container */}
@@ -56,7 +56,7 @@ export default function TrustExplanationModal({ onClose }: Props) {
           <button
             ref={closeButtonRef}
             onClick={onClose}
-            className="bg-[#5b5bf6] text-white px-4 py-2 rounded hover:bg-[#6c6cf7] min-h-[44px] touch-manipulation"
+            className="bg-[#5b5bf6] text-white px-4 py-2 rounded hover:bg-[#6c6cf7]"
             aria-label="Close trust explanation"
           >
             Got it

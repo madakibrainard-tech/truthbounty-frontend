@@ -5,8 +5,7 @@
   align-items: center;
   padding: 8px 12px;
   gap: 8px;
-  height: 44px;
-  min-height: 44px;
+  height: 38px;
   background: #ffffff;
   border-radius: 4px;
   font-weight: 600;
@@ -14,7 +13,6 @@
   line-height: 22px;
   color: #1a1523;
   margin-right: 1rem;
-  touch-manipulation: manipulation;
 }
 
 .displayData {
@@ -24,18 +22,15 @@
 }
 
 .disconnectButton {
-  padding: 10px 16px;
+  padding: 6px 12px;
   background: #ef4444;
   color: white;
   border: none;
   border-radius: 4px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
-  height: 44px;
-  min-height: 44px;
-  touch-manipulation: manipulation;
 }
 
 .disconnectButton:hover {

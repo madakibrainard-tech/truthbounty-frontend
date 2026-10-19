@@ -48,7 +48,7 @@ export function EvidenceViewer({
         onClick={() => setExpanded((prev) => !prev)}
         aria-expanded={expanded}
         aria-controls="evidence-content"
-        className="flex items-center justify-between w-full font-semibold mb-3 text-base sm:text-lg text-left focus-visible:outline-2 focus-visible:outline-[#5b5bf6] focus-visible:outline-offset-2 rounded min-h-[44px] touch-manipulation"
+        className="flex items-center justify-between w-full font-semibold mb-3 text-base sm:text-lg text-left focus-visible:outline-2 focus-visible:outline-[#5b5bf6] focus-visible:outline-offset-2 rounded"
       >
         <span>Evidence</span>
         <span aria-hidden="true">{expanded ? '▲' : '▼'}</span>
@@ -67,7 +67,7 @@ export function EvidenceViewer({
           {projection.viewState === 'error' && !rawEvidence && (
             <div className="space-y-2" role="alert">
               <p className="text-sm text-red-500">Evidence projection unavailable.</p>
-              <button type="button" onClick={projection.retry} className="text-sm text-blue-600 underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500 min-h-[44px] touch-manipulation inline-flex items-center px-2 py-1">
+              <button type="button" onClick={projection.retry} className="text-sm text-blue-600 underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500">
                 Try again
               </button>
             </div>

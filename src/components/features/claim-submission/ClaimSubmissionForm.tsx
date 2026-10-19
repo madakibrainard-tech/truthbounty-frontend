@@ -12,7 +12,6 @@ import { useWriteReadiness } from "@/hooks/useWriteReadiness";
 import { EvidenceUploader } from "@/features/evidence-upload/EvidenceUploader";
 import { buildContentDigest, buildEvidenceSubmission } from "@/features/evidence-upload/evidence-commitment";
 import type { EvidenceCommitment } from "@/features/evidence-upload/types";
-import { useKeyboardAwareScroll } from '@/hooks/useVisualViewport';
 
 const claimAbi = parseAbi([
   "function createClaim(bytes32 contentDigest, address bountyAsset, uint256 amount, bytes32 configHash) returns (uint256 claimId)",
@@ -184,21 +183,9 @@ const ClaimSubmissionForm: React.FC<ClaimFormProps> = ({ onSubmit, onClose }) =>
 
   const modalRef = useRef<HTMLDivElement>(null);
   const firstInputRef = useRef<HTMLInputElement>(null);
-  const titleRef = useRef<HTMLInputElement>(null);
-  const categoryRef = useRef<HTMLInputElement>(null);
-  const impactRef = useRef<HTMLInputElement>(null);
-  const sourceRef = useRef<HTMLInputElement>(null);
-  const descriptionRef = useRef<HTMLTextAreaElement>(null);
-
   useDialogFocus(true, modalRef, firstInputRef, () => {
     if (!isPending) onClose();
   });
-
-  useKeyboardAwareScroll(titleRef, { offset: 80 });
-  useKeyboardAwareScroll(categoryRef, { offset: 80 });
-  useKeyboardAwareScroll(impactRef, { offset: 80 });
-  useKeyboardAwareScroll(sourceRef, { offset: 80 });
-  useKeyboardAwareScroll(descriptionRef, { offset: 80 });
 
   const validateField = (name: string, value: string): string | undefined => {
     switch (name) {
@@ -369,7 +356,7 @@ const ClaimSubmissionForm: React.FC<ClaimFormProps> = ({ onSubmit, onClose }) =>
   return (
     <div
       ref={modalRef}
-      className="fixed inset-0 z-50 modal-shell bg-black/60 safe-area-top safe-area-bottom safe-area-left safe-area-right"
+      className="fixed inset-0 z-50 modal-shell bg-black/60"
       role="dialog"
       aria-modal="true"
       aria-labelledby="claim-submission-title"
@@ -432,51 +419,42 @@ const ClaimSubmissionForm: React.FC<ClaimFormProps> = ({ onSubmit, onClose }) =>
           </p>
         )}
 
-        {(["title", "category", "impact", "source"] as StringFormField[]).map((field, index) => {
-            const inputRefs = {
-              title: titleRef,
-              category: categoryRef,
-              impact: impactRef,
-              source: sourceRef,
-            };
-            return (
-              <div key={field}>
-                <input
-                  ref={index === 0 ? firstInputRef : inputRefs[field]}
-                  id={`claim-${field}`}
-                  name={field}
-                  type="text"
-                  className={`input ${errors[field] ? "border-red-500" : ""}`}
-                  placeholder={field === "source" ? "https://example.com" : capitalize(field)}
-                  aria-label={capitalize(field)}
-                  value={formValues[field]}
-                  onChange={(e) =>
-                    handleFieldChange(field, e.target.value)
-                  }
-                  onBlur={() =>
-                    handleBlur(field, formValues[field])
-                  }
-                />
-                {errors[field] && touched[field] && (
-                  <p className="text-red-500 text-sm break-words" role="alert">{errors[field]}</p>
-                )}
-              </div>
-            );
-          })}
+        {(["title", "category", "impact", "source"] as StringFormField[]).map((field, index) => (
+          <div key={field}>
+            <input
+              ref={index === 0 ? firstInputRef : undefined}
+              id={`claim-${field}`}
+              name={field}
+              type="text"
+              className={`input ${errors[field] ? "border-red-500" : ""}`}
+              placeholder={field === "source" ? "https://example.com" : capitalize(field)}
+              aria-label={capitalize(field)}
+              value={formValues[field]}
+              onChange={(e) =>
+                handleFieldChange(field, e.target.value)
+              }
+              onBlur={() =>
+                handleBlur(field, formValues[field])
+              }
+            />
+            {errors[field] && touched[field] && (
+              <p className="text-red-500 text-sm break-words" role="alert">{errors[field]}</p>
+            )}
+          </div>
+        ))}
 
-          <textarea
-            ref={descriptionRef}
-            id="claim-description"
-            name="description"
-            className={`input ${errors.description ? "border-red-500" : ""}`}
-            placeholder="Description"
-            aria-label="Description"
-            value={description}
-            onChange={(e) =>
-              handleFieldChange("description", e.target.value)
-            }
-            onBlur={() => handleBlur("description", description)}
-          />
+        <textarea
+          id="claim-description"
+          name="description"
+          className={`input ${errors.description ? "border-red-500" : ""}`}
+          placeholder="Description"
+          aria-label="Description"
+          value={description}
+          onChange={(e) =>
+            handleFieldChange("description", e.target.value)
+          }
+          onBlur={() => handleBlur("description", description)}
+        />
         {errors.description && touched.description && (
           <p className="text-red-500 text-sm break-words" role="alert">{errors.description}</p>
         )}
